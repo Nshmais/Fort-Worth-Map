@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fort Worth Sights & Landmarks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.jpg">
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div class="container">
+        <div class="options-box">
+            <h1>Fort Worth Sights & Landmarks</h1>
+            <div>
+                <input id="show-Landmarks" type="button" value="Show Sights & Landmarks">
+                <input id="hide-Landmarks" type="button" value="Hide Sights & Landmarks">
+            </div>
+
+            <div>
+                <ul data-bind="foreach: locationList">
+                    <button type="button" class="btn btn-outline-primary b1" data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></button>
+                    <br>
+                </ul>
+            </div>
+
+            <div data-bind="with: CurrentLocation" class=" well">
+                <!-- bind it with the name attribute from CurrentCat function CurrentCat().name -->
+                <h3 class="box" data-bind="text: title"></h3>
+                <div class="unit">
+                    <strong>Address</strong>
+                    <p class="text box" data-bind="text: address"></p>
+                </div>
+                <div class="unit">
+                    <strong>About</strong>
+                    <p class="text box text_space" data-bind="text: about" ></p>
+                </div>
+            </div>
+            <div><p><strong>Created by:</strong> Noah Shmais</p></div>
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <!-- knockout Library -->
+    <script type='text/javascript' src='js/lib/knockout-3.4.2.js'></script>
+    <script src="js/app.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=MYAPIKEY&libraries=geometry&v=3&callback=initMap">
+    </script>
+
+  </body>
+</html>
