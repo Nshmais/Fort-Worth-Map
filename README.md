@@ -1,7 +1,7 @@
-# Fortworth Map
+# Fort Worth Map
 <img src="img/map.png" alt="map" align="right" height="150"> 
 
-The main task of this project is to develop a single page application featuring a map of my neighborhood. The map include many functionality such as creating markers and highlighted locations, third-party data about those locations and various ways to browse the content.
+The main task of this project is to develop a single page application featuring a map of my neighborhood. The map include many functionality such as creating markers and highlighted locations, data about those locations and various ways to browse the content.
 
 ## Installation & Run
 1. Clone the [Fort-Worth-Map](https://github.com/Nshmais/Fort-Worth-Map) github repository.
@@ -57,3 +57,5 @@ then we look for location in the result:
 ```
 ## License
 `Neighborhood_Map` is a released under the [MIT License](https://opensource.org/licenses/MIT)
+
+<img src="img/fort worth.jpg">
