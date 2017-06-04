@@ -1,9 +1,13 @@
-# Neighborhood Map
+# Fortworth Map
 <img src="img/map.png" alt="map" align="right" height="150"> 
 
 The main task of this project is to develop a single page application featuring a map of my neighborhood. The map include many functionality such as creating markers and highlighted locations, third-party data about those locations and various ways to browse the content.
 
-
+## Installation & Run
+1. Clone the [Fort-Worth-Map](https://github.com/Nshmais/Fort-Worth-Map) github repository.
+2. Generated/ Replece `API key`. For more info check next section `Google API key`.
+3. Double click on `Neighberhood_map.html` file that yo cloned.
+4. Welcome to Fort Worth, TX
 
 ## Google API key
 <img src="img/key_icon.png" height="25">In order to use Google_Maps API we will meed a key. **Make sure you replace "MYAPIKEY" in the JavaScript API call with your generated API key in code.** please, follow the instruction bellow to get the key: 
@@ -33,9 +37,6 @@ The main task of this project is to develop a single page application featuring 
 <img src="img/13.PNG">
 
 14. Repeat steps 10 and 11 for “Server Key,” if you will be making server-side requests. You can access these keys at any time by visiting the “Credentials” sub-menu under the “API Manager” menu
-
-## Code Explanation
-
 
 ## Geocoding
 [Geocoding](https://developers.google.com/maps/documentation/geocoding/intro) is the process of converting addresses (like "1600 Amphitheatre Parkway, Mountain View, CA") into geographic coordinates (like latitude 37.423021 and longitude -122.083739), which you can use to place markers on a map, or position the map and the other way around.
