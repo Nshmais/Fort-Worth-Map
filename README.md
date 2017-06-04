@@ -56,6 +56,6 @@ then we look for location in the result:
             }
 ```
 ## License
-`Neighborhood_Map` is a released under the [MIT License](https://opensource.org/licenses/MIT)
+`Fort-Worth-Map` is a released under the [MIT License](https://opensource.org/licenses/MIT)
 
 <img src="img/fort worth.jpg">
