@@ -2,36 +2,43 @@ var locations = [
           {title: 'Water Gardens',
            about:'Built in 1974,designed by Phillip Johnson',
            address:'1502 Commerce St, Fort Worth, TX 76102',
+           website:'https://www.fortworth.com/',
            location: {lat: 32.7477, lng: -97.3266}},
 
           {title: 'Stockyards Station',
            about:'140 E Exchange Ave, Fort Worth, TX 76164',
            address:'140 E Exchange Ave, Fort Worth, TX 76164',
+           website:'http://stockyardsstation.com/',
            location: {lat: 32.7886, lng: -97.3462}},
 
           {title: 'Botanic Garden',
            about:'Home to more than 2,500 species of plants in its 23 specialty gardens',
            address:'3220 Botanic Garden Blvd, Fort Worth, TX 76107',
+           website:'http://www.fwbg.org/',
            location: {lat: 32.7402, lng: -97.3639}},
 
           {title: 'Texas Christian University',
            about:'Established in 1873 by Addison & Randolph Clark as the AddRan Male & Female College',
            address:'2800 S University Dr, Fort Worth, TX 76129',
+           website:'http://www.tcu.edu/',
            location: {lat: 32.7095, lng: -97.3628}},
 
           {title: 'Fort Worth Zoo',
            about:'The zoo now home to 5,000 native and exotic animals ',
            address:'1989 Colonial Pkwy, Fort Worth, TX 76110',
+           website:'https://www.fortworthzoo.org/',
            location: {lat: 32.7230, lng: -97.3567}},
 
           {title: 'Kimbell Art Museum',
            about:'Hosts an art collection as well as traveling art exhibitions, educational programs and an extensive research library.',
            address:'3333 Camp Bowie Blvd, Fort Worth, TX 76107',
+           website:'https://www.kimbellart.org/',
            location: {lat: 32.7486, lng: -97.3693}},
 
           {title: 'Museum of Science and History',
            about:'Provides hundreds of programs aimed at engaging children and families in learning',
            address:'1600 Gendy St, Fort Worth, TX 76107',
+           website:'http://www.fwmuseum.org/',
            location: {lat: 32.7442, lng: -97.3693}}
         ];
 
@@ -150,14 +157,18 @@ var styles = [
         var highlightedIcon = makeMarkerIcon('0091ff');
         // loop over thelocations array to initialize markers.
         for (var i = 0; i < locations.length; i++) {
-          // Get the position from the locations array.
+          // Get the position, title, adress, and website from the locations array to pop up infowindow.
           var position = locations[i].location;
           var title = locations[i].title;
-          // Create a marker per location, and put into markers array.
+          var address = locations[i].address;
+          var website = locations[i].website;
+          // Create a marker per location, and put into markers array.(all variables will show in infowindow)
           var marker = new google.maps.Marker({
             position: position,
             title: title,
             draggable: true,
+            address: address,
+            website: website,
             animation: google.maps.Animation.DROP,
             icon: defaultIcon,
             id: i
@@ -207,7 +218,8 @@ var styles = [
               var nearStreetViewLocation = data.location.latLng;
               var heading = google.maps.geometry.spherical.computeHeading(
                 nearStreetViewLocation, marker.position);
-                infowindow.setContent('<div>' + marker.title + '</div><div id="pano"></div>');
+                // html for marker pop up infowindow
+                infowindow.setContent('<div>' + marker.title + '</div><a target="_blank" href="' + marker.website + '">' + marker.website + '</a><div>' + marker.address + '</div><div id="pano"></div>');
                 var panoramaOptions = {
                   position: nearStreetViewLocation,
                   pov: {
@@ -263,7 +275,7 @@ var styles = [
       }
 
 
-        //bounce the marker when click on its title
+    //bounce the marker icon when click on its title
    function Bounce(index) {
     var marker = markers[index];
     if (marker.getAnimation() !== null) {
