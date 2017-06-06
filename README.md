@@ -55,6 +55,10 @@ then we look for location in the result:
                "lng" : -97.07259839999999
             }
 ```
+
+## Requirements
+- To get the map into full screen mode click on Google-Icon on the map  
+
 ## License
 `Fort-Worth-Map` is a released under the [MIT License](https://opensource.org/licenses/MIT)
 
