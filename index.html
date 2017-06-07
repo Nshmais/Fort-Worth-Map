@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fort Worth Sights & Landmarks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.jpg">
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/Sidenav.css">
+  </head>
+
+  <body>
+
+    <Sidenav id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <form class="form-inline my-2 my-lg-0 bar" >
+            <input class="form-control mr-sm-2" type="search" placeholder="Search...">
+            <button class="btn btn-outline-success my-2 my-sm-0 search_button" type="submit">Search</button>
+        </form>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </Sidenav>
+
+
+    <header class="shape">
+        <h1 class="title">Fort Worth Sights & Landmarks</h1>
+    </header>
+
+    <main class="container">
+        <aside class="options-box">
+            <form class="form-inline my-2 my-lg-0 bar" >
+                <input class="form-control mr-sm-2" type="search" placeholder="Search...">
+                <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search..." data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off"> -->
+
+                <button class="btn btn-outline-success my-2 my-sm-0 search_button" type="submit">Search</button>
+            </form>
+
+            <span style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776; Search</span>
+
+            <div>
+                <input id="show-Landmarks" type="button" value="Show Sights & Landmarks">
+                <input id="hide-Landmarks" type="button" value="Hide Sights & Landmarks">
+            </div>
+
+            <div>
+                <ul data-bind="foreach: locationList">
+                    <button type="button" class="btn btn-outline-primary b1" data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></button>
+                    <br>
+                </ul>
+            </div>
+
+            <div data-bind="with: CurrentLocation" class=" well">
+                <!-- bind it with the title attribute from CurrentLocation function CurrentLocation().title -->
+                <h3 class="box" data-bind="text: title"></h3>
+                <div class="unit">
+                    <strong>Address</strong>
+                    <p class="text box" data-bind="text: address"></p>
+                </div>
+                <div class="unit">
+                    <strong>About</strong>
+                    <p class="text box text_space" data-bind="text: about" ></p>
+                </div>
+            </div>
+            <div id="map"></div>
+        </aside>
+    </main>
+    <footer class="shape title">
+        <div  id="footer"><p><strong>Created by:</strong> Noah Shmais</p></div>
+    </footer>
+
+    <!-- insert data -->
+    <script src="js/data.js"></script>
+        <!-- insert map style -->
+    <script src="js/map_style.js"></script>
+    <!-- knockout Library -->
+    <script src='js/lib/knockout-3.4.2.js'></script>
+    <script src="js/app.js"></script>
+    <script src="js/Sidenav.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpjPjaZgnxULhSL1hzL76lCk4HrIK_WTA&libraries=geometry&v=3&callback=initMap" onerror="ErrorHandling()">
+    </script>
+
+  </body>
+</html>

@@ -4,6 +4,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #0B3C5D;
 }
 .container {
     height: 100%;
@@ -18,10 +19,7 @@ h1 {
     margin: 0 0 10px 0;
     text-align: center;
 }
-#hide-listings,
-#show-listings {
-    width: 48%;
-}
+
 hr {
     background: #D0D7D9;
     height: 1px;
@@ -34,6 +32,8 @@ hr {
     left: 362px;
     position: absolute;
     right: 0px;
+    border:1px solid #A9A9A9;
+    border-radius: 3px;
 }
 .options-box {
     background: #fff;
@@ -44,7 +44,14 @@ hr {
     padding: 10px 10px 30px 10px;
     text-align: left;
     width: 340px;
+    background-color: #687ABF;
 }
+
+#show-Landmarks, #hide-Landmarks{
+    border:1px solid #A9A9A9;
+    border-radius: 3px
+}
+
 #pano {
     width: 200px;
     height: 200px;
@@ -62,7 +69,6 @@ hr {
 .box{
     margin-top: 1%;
     padding-top: 1%;
-
 }
 
 .text_space{
@@ -72,3 +78,31 @@ hr {
 .unit{
     line-height: 20px;
 }
+
+#footer{
+    height: 2%;
+}
+
+.bar{
+    margin-bottom: 3%;
+}
+
+.search_button{
+    width:37%;
+    border:1px solid #A9A9A9;
+}
+
+.shape{
+    /*border:1px solid #A9A9A9;*/
+    margin-right: 1%;
+    margin-left: 2.5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    /*border-radius: 3px;*/
+}
+
+.title{
+    color: #ffffff;
+}
+
+
