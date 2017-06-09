@@ -16,16 +16,16 @@
     <Sidenav id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-        <input class="form-control" data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off">
+        <center><input class="form-control width" data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off"></center>
 
-        <strong>Search results:</strong>
-        <ul data-bind="foreach: searchResults">
-            <li data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></li>
+        <strong class="sides">Search results:</strong>
+        <ul  data-bind="foreach: searchResults">
+            <li class="sides" data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></li>
         </ul>
 
-        <strong>All locationList:</strong>
+        <strong class="sides">All locationList:</strong>
         <ul data-bind="foreach: locationList">
-            <li data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></li>
+            <li class="sides" data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></li>
         </ul>
 
     </Sidenav>
