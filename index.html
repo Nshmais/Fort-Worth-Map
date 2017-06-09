@@ -16,8 +16,18 @@
     <Sidenav id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
+        <input class="form-control" data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off">
 
-        <!-- <input data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off"> -->
+        <strong>Search results:</strong>
+        <ul data-bind="foreach: searchResults">
+            <li data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></li>
+        </ul>
+
+        <strong>All locationList:</strong>
+        <ul data-bind="foreach: locationList">
+            <li data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></li>
+        </ul>
+
     </Sidenav>
 
 
@@ -73,11 +83,13 @@
     <script src="js/map_style.js"></script>
     <!-- knockout Library -->
     <script src='js/lib/knockout-3.4.2.js'></script>
+
     <script src="js/app.js"></script>
     <script src="js/Sidenav.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpjPjaZgnxULhSL1hzL76lCk4HrIK_WTA&libraries=geometry&v=3&callback=initMap" onerror="ErrorHandling()">
     </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script> -->
 
   </body>
 </html>

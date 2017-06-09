@@ -9,17 +9,29 @@ var Location = function(data){
 var ViewModel = function(){
     var self=this;
     // creat a locationList array to loop all the data and map Location function
-    this.locationList = ko.observableArray([]);
+ this.locationList = ko.observableArray([])
     locations.forEach(function(locationItem){
         self.locationList.push(new Location(locationItem));
     });
     this.CurrentLocation = ko.observable(self.locationList()[0]);
-// display a cliked landmark
+    // display a cliked landmark
     this.setLandmark=function(index){
         self.CurrentLocation(self.locationList()[index]);
     };
+
+    // Create Search for Sidenav
+    this.Query = ko.observable('');
+
+    this.searchResults = ko.computed(function() {
+        var q = self.Query();
+        return self.locationList().filter(function(i) {
+            return i.title.toLowerCase().indexOf(q) >= 0;
+        });
+    });
+
 };
 
+// ko.applyBindings(ViewModel);
 ko.applyBindings(new ViewModel());
 
 
