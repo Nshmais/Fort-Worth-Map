@@ -47,11 +47,6 @@ hr {
     background-color: #687ABF;
 }
 
-#show-Landmarks, #hide-Landmarks{
-    border:1px solid #A9A9A9;
-    border-radius: 3px
-}
-
 #pano {
     width: 200px;
     height: 200px;
@@ -87,18 +82,16 @@ hr {
     margin-bottom: 3%;
 }
 
-.search_button{
-    width:37%;
+#show-Landmarks, #hide-Landmarks{
     border:1px solid #A9A9A9;
+    border-radius: 3px
 }
 
 .shape{
-    /*border:1px solid #A9A9A9;*/
     margin-right: 1%;
     margin-left: 2.5%;
     margin-top: 1%;
     margin-bottom: 1%;
-    /*border-radius: 3px;*/
 }
 
 .title{

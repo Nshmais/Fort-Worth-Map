@@ -16,14 +16,8 @@
     <Sidenav id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-        <form class="form-inline my-2 my-lg-0 bar" >
-            <input class="form-control mr-sm-2" type="search" placeholder="Search...">
-            <button class="btn btn-outline-success my-2 my-sm-0 search_button" type="submit">Search</button>
-        </form>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+
+        <!-- <input data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off"> -->
     </Sidenav>
 
 
@@ -34,17 +28,16 @@
     <main class="container">
         <aside class="options-box">
             <form class="form-inline my-2 my-lg-0 bar" >
-                <input class="form-control mr-sm-2" type="search" placeholder="Search...">
+                <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search..."> -->
                 <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search..." data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off"> -->
-
-                <button class="btn btn-outline-success my-2 my-sm-0 search_button" type="submit">Search</button>
+                <!-- <button class="btn btn-outline-success my-2 my-sm-0 search_button" type="submit">Search</button> -->
             </form>
 
-            <span style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776; Search</span>
+            <span style="font-size:15px;cursor:pointer" onclick="openNav()">&#9776; Search</span>
 
             <div>
-                <input id="show-Landmarks" type="button" value="Show Sights & Landmarks">
-                <input id="hide-Landmarks" type="button" value="Hide Sights & Landmarks">
+                <input data-bind="click: showLandmarks" id="show-Landmarks" type="button" value="Show Sights & Landmarks">
+                <input data-bind="click: hideLandmarks" id="hide-Landmarks" type="button" value="Hide Sights & Landmarks">
             </div>
 
             <div>
@@ -72,6 +65,7 @@
     <footer class="shape title">
         <div  id="footer"><p><strong>Created by:</strong> Noah Shmais</p></div>
     </footer>
+
 
     <!-- insert data -->
     <script src="js/data.js"></script>

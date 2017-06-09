@@ -79,8 +79,6 @@ function initMap() {
         this.setIcon(defaultIcon);
       });
     }
-    document.getElementById('show-Landmarks').addEventListener('click', showLandmarks);
-    document.getElementById('hide-Landmarks').addEventListener('click', hideLandmarks);
 }
 
 
