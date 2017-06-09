@@ -1,4 +1,5 @@
 function openNav() {
+    // the size of the navbar
     document.getElementById("mySidenav").style.width = "300px";
 }
 
