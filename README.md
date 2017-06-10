@@ -14,6 +14,9 @@ The main task of this project is to develop a single page application featuring 
 ## Markers Search
 <img src="img/search.png" height="25"> The navbar also contain a markers search responding to the input of the search keyword. When clicking on the marker display in search result the corresponding marker location on the map will bounce.  
 
+## More Markers
+	✍ To add more markers just add more data to `js/data.js` and populate the map with markers.
+
 ## Google API key
 <img src="img/key_icon.png" height="25">In order to use Google_Maps API we will meed a key. **Make sure you replace "MYAPIKEY" in the JavaScript API call with your generated API key in code.** please, follow the instruction bellow to get the key: 
 1. Visit [console.developers.google](https://console.developers.google.com)
@@ -42,6 +45,10 @@ The main task of this project is to develop a single page application featuring 
 <img src="img/13.PNG">
 
 14. Repeat steps 10 and 11 for “Server Key,” if you will be making server-side requests. You can access these keys at any time by visiting the “Credentials” sub-menu under the “API Manager” menu
+
+## The User View
+<img src="img/app1.PNG" height="500">
+<img src="img/app2.PNG" height="500">
 
 ## Geocoding
 [Geocoding](https://developers.google.com/maps/documentation/geocoding/intro) is the process of converting addresses (like "1600 Amphitheatre Parkway, Mountain View, CA") into geographic coordinates (like latitude 37.423021 and longitude -122.083739), which you can use to place markers on a map, or position the map and the other way around.
