@@ -173,7 +173,7 @@ function populateInfoWindow(marker, infowindow) {
           infowindow.setContent('<div>' + marker.title + '</div>' +
             '<div>No Street View Found</div>');
         }
-      }
+      };
       // Use streetview service to get the closest streetview image within
       // 100 meters radius of the markers position
       streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
