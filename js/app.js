@@ -108,6 +108,9 @@ function initMap() {
       });
       // Push the marker to our array of markers.
       markers.push(marker);
+    }
+
+    markers.forEach(function(marker){
       // Create an onclick event to open the large infowindow at each marker.
       marker.addListener('click', function() {
         populateInfoWindow(this, largeInfowindow);
@@ -120,7 +123,7 @@ function initMap() {
       marker.addListener('mouseout', function() {
         this.setIcon(defaultIcon);
       });
-    }
+    });
 }
 
 
@@ -150,7 +153,7 @@ function populateInfoWindow(marker, infowindow) {
       // In case the status is OK, which means the pano was found, compute the
       // position of the streetview image, then calculate the heading, then get a
       // panorama from that and set the options
-      function getStreetView(data, status) {
+       var getStreetView = function(data, status) {
         if (status == google.maps.StreetViewStatus.OK) {
           var nearStreetViewLocation = data.location.latLng;
           var heading = google.maps.geometry.spherical.computeHeading(
