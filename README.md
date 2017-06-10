@@ -15,7 +15,7 @@ The main task of this project is to develop a single page application featuring 
 <img src="img/search.png" height="25"> The navbar also contain a markers search responding to the input of the search keyword. When clicking on the marker display in search result the corresponding marker location on the map will bounce.  
 
 ## More Markers
-	✍ To add more markers just add more data to `js/data.js` and populate the map with markers.
+✍ To add more markers just add more data to `js/data.js` and populate the map with markers.
 
 ## Google API key
 <img src="img/key_icon.png" height="25">In order to use Google_Maps API we will meed a key. **Make sure you replace "MYAPIKEY" in the JavaScript API call with your generated API key in code.** please, follow the instruction bellow to get the key: 
