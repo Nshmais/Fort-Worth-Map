@@ -1,7 +1,10 @@
 // Yahoo Weather API
 var city = "";
-// var weather_string="";
-// getWeather(city);
+
+function run(){
+    city =document.getElementById("userInput").value;
+    getWeather(city);
+}
 
 function getWeather(city) {
     // yahoo api for weather
@@ -12,19 +15,18 @@ function getWeather(city) {
         } else if (data.query.results === 404){
             console.log("not a valid input: " + city + "!");
         } else{
+            // get temprature and sky conditions from API results
             var temp=data.query.results.channel.item.condition.temp;
             var sky=data.query.results.channel.item.condition.text;
             var weather_string="";
             weather_string += "<strong>City: </strong>"+ city+ "<br><strong>Temperature: </strong>"+ temp+ "°F"+ "<br><strong>Sky: </strong>"+sky
+            // display string as html code in weather id tag
             document.getElementById("weather").innerHTML=weather_string
         }
     });
 }
 
-function run(){
-    city =document.getElementById("userInput").value;
-    getWeather(city);
-}
+
 
 
 // start locations for markers
@@ -35,8 +37,6 @@ var Location = function(data){
     this.about = data.about;
     this.address = data.address;
 };
-
-
 
 var ViewModel = function(){
     var self=this;
@@ -60,10 +60,8 @@ var ViewModel = function(){
             return i.title.toLowerCase().indexOf(q) >= 0;
         });
     });
-
 };
 
-// ko.applyBindings(ViewModel);
 ko.applyBindings(new ViewModel());
 
 

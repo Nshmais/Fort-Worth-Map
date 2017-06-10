@@ -15,7 +15,15 @@
 
     <Sidenav id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
+        <!--Yahoo Weather API -->
+        <img class="sides"src="img/cloud.png"><strong class="sides">Weather API:</strong>
+        <center>
+            <input class="search" type="text" id="userInput" placeholder="Fort Worth, TX" value="Fort Worth, TX"></input>
+            <button type="button" class="button" onclick="run()">Submit</button></center>
+            <div class="weather">
+                <p id="weather"></p>
+            </div>
+        <!-- Markers search -->
         <img src="img/search.png"><strong class="sides">Markers search:</strong>
         <center><input class="form-control width" data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off" placeholder="Search Markers"></center>
 
@@ -28,14 +36,6 @@
         <ul data-bind="foreach: locationList">
             <li class="sides" data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></li>
         </ul>
-
-        <img class="sides"src="img/cloud.png"><strong class="sides">Weather API:</strong>
-        <center>
-            <input class="search" type="text" id="userInput" placeholder="Fort Worth, TX" value="Fort Worth, TX"></input>
-            <button type="button" class="button" onclick="run()">Submit</button></center>
-            <div class="weather">
-                <p id="weather"></p>
-            </div>
 
     </Sidenav>
 
