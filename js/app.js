@@ -19,9 +19,9 @@ function getWeather(city) {
             var temp=data.query.results.channel.item.condition.temp;
             var sky=data.query.results.channel.item.condition.text;
             var weather_string="";
-            weather_string += "<strong>City: </strong>"+ city+ "<br><strong>Temperature: </strong>"+ temp+ "°F"+ "<br><strong>Sky: </strong>"+sky
+            weather_string += "<strong>City: </strong>"+ city+ "<br><strong>Temperature: </strong>"+ temp+ "°F"+ "<br><strong>Sky: </strong>"+sky;
             // display string as html code in weather id tag
-            document.getElementById("weather").innerHTML=weather_string
+            document.getElementById("weather").innerHTML=weather_string;
         }
     });
 }
@@ -41,7 +41,7 @@ var Location = function(data){
 var ViewModel = function(){
     var self=this;
     // creat a locationList array to loop all the data and map Location function
- this.locationList = ko.observableArray([])
+ this.locationList = ko.observableArray([]);
     locations.forEach(function(locationItem){
         self.locationList.push(new Location(locationItem));
     });
