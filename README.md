@@ -1,4 +1,4 @@
-# Fort Worth Map
+# 📌 Fort Worth Map
 <img src="img/map.png" alt="map" align="right" height="150"> 
 
 The main task of this project is to develop a single page application featuring a map of my neighborhood. The map include many functionality such as creating markers and highlighted locations, data about those locations and various ways to browse the content.
