@@ -1,3 +1,33 @@
+// Yahoo Weather API
+var city = "";
+// var weather_string="";
+// getWeather(city);
+
+function getWeather(city) {
+    // yahoo api for weather
+    $.get('https://query.yahooapis.com/v1/public/yql?q=select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + city + '")&format=json', function (data) {
+        /* Check that a place was found (we'll just grab the first) */
+        if (data.query.results === null) {
+            console.log("Location not found: " + city + "!");
+        } else if (data.query.results === 404){
+            console.log("not a valid input: " + city + "!");
+        } else{
+            var temp=data.query.results.channel.item.condition.temp;
+            var sky=data.query.results.channel.item.condition.text;
+            var weather_string="";
+            weather_string += "<strong>City: </strong>"+ city+ "<br><strong>Temperature: </strong>"+ temp+ "°F"+ "<br><strong>Sky: </strong>"+sky
+            document.getElementById("weather").innerHTML=weather_string
+        }
+    });
+}
+
+function run(){
+    city =document.getElementById("userInput").value;
+    getWeather(city);
+}
+
+
+// start locations for markers
 // create an empty Location function
 var Location = function(data){
     this.title = data.title;
@@ -5,6 +35,8 @@ var Location = function(data){
     this.about = data.about;
     this.address = data.address;
 };
+
+
 
 var ViewModel = function(){
     var self=this;

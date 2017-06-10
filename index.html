@@ -16,7 +16,8 @@
     <Sidenav id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-        <center><input class="form-control width" data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off"></center>
+        <img src="img/search.png"><strong class="sides">Markers search:</strong>
+        <center><input class="form-control width" data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off" placeholder="Search Markers"></center>
 
         <strong class="sides">Search results:</strong>
         <ul  data-bind="foreach: searchResults">
@@ -28,6 +29,14 @@
             <li class="sides" data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></li>
         </ul>
 
+        <img class="sides"src="img/cloud.png"><strong class="sides">Weather API:</strong>
+        <center>
+            <input class="search" type="text" id="userInput" placeholder="Fort Worth, TX" value="Fort Worth, TX"></input>
+            <button type="button" class="button" onclick="run()">Submit</button></center>
+            <div class="weather">
+                <p id="weather"></p>
+            </div>
+
     </Sidenav>
 
 
@@ -37,12 +46,6 @@
 
     <main class="container">
         <aside class="options-box">
-            <form class="form-inline my-2 my-lg-0 bar" >
-                <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search..."> -->
-                <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search..." data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off"> -->
-                <!-- <button class="btn btn-outline-success my-2 my-sm-0 search_button" type="submit">Search</button> -->
-            </form>
-
             <span style="font-size:15px;cursor:pointer" onclick="openNav()">&#9776; Search</span>
 
             <div>
@@ -69,6 +72,7 @@
                     <p class="text box text_space" data-bind="text: about" ></p>
                 </div>
             </div>
+
             <div id="map"></div>
         </aside>
     </main>
@@ -79,13 +83,15 @@
 
     <!-- insert data -->
     <script src="js/data.js"></script>
-        <!-- insert map style -->
+    <!-- insert map style -->
     <script src="js/map_style.js"></script>
     <!-- knockout Library -->
     <script src='js/lib/knockout-3.4.2.js'></script>
+    <script src='js/lib/jquery-3.2.1.js'></script>
 
     <script src="js/app.js"></script>
     <script src="js/Sidenav.js"></script>
+    <!-- insert google map API -->
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpjPjaZgnxULhSL1hzL76lCk4HrIK_WTA&libraries=geometry&v=3&callback=initMap" onerror="ErrorHandling()">
     </script>
