@@ -12,8 +12,6 @@ function getWeather(city) {
         /* Check that a place was found (we'll just grab the first) */
         if (data.query.results === null) {
             console.log("Location not found: " + city + "!");
-        } else if (data.query.results === 404){
-            console.log("not a valid input: " + city + "!");
         } else{
             // get temprature and sky conditions from API results
             var temp=data.query.results.channel.item.condition.temp;
@@ -23,10 +21,12 @@ function getWeather(city) {
             // display string as html code in weather id tag
             document.getElementById("weather").innerHTML=weather_string;
         }
+    })
+    // error handling method for Ajax request
+    .fail(function() {
+        alert( "Error, please check your Ajax request (Yahoo Weather API)" );
     });
 }
-
-
 
 
 // start locations for markers
@@ -41,7 +41,7 @@ var Location = function(data){
 var ViewModel = function(){
     var self=this;
     // creat a locationList array to loop all the data and map Location function
- this.locationList = ko.observableArray([]);
+    this.locationList = ko.observableArray([]);
     locations.forEach(function(locationItem){
         self.locationList.push(new Location(locationItem));
     });
