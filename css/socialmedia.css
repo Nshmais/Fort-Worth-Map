@@ -1,0 +1,32 @@
+.socialmedia{
+    background-color: #DCDCDC;
+    padding-top:1%;
+    padding-bottom:1%;
+    margin-left: 10px;
+}
+
+.topnav {
+        list-style-type: none;
+        padding-left:5px;
+        overflow: hidden;
+        background-color: #DCDCDC;
+}
+
+/* Float the list items side by side */
+.topnav li {float: left;}
+
+/* Style the links inside the list items */
+.topnav li a {  display: inline-block;
+                color: #747704;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                transition: 0.3s;
+                font-size: 17px;
+}
+
+/* Change background color of links on hover */
+.topnav li a:hover {background-color: #555;}
+
+/* Hide the list item that contains the link that should open and close the topnav on small screens */
+.topnav .icon {display: none;}

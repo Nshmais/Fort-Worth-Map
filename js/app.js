@@ -191,9 +191,12 @@ function showLandmarks() {
         markers[i].setMap(map);
         bounds.extend(markers[i].position);
     }
-  map.fitBounds(bounds);
+    // make sure map markers always fit on screen
+    map.fitBounds(bounds);
+    google.maps.event.addDomListener(window, 'resize', function() {
+      map.fitBounds(bounds); // `bounds` is a `LatLngBounds` object
+    });
 }
-
 
 // This function will loop through the markers and hide them all.
 function hideLandmarks() {

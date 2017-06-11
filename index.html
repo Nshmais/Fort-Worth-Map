@@ -9,23 +9,53 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/Sidenav.css">
+    <!-- Awsome font -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
-
-    <Sidenav id="mySidenav" class="sidenav">
+    <nav id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <!-- Show & hide -->
+        <div class="show_hide">
+            <button class="landmark" type="button" data-bind="click: showLandmarks" id="show-Landmarks" >Show Landmarks</button>
+            <button class="landmark" type="button" data-bind="click: hideLandmarks" id="hide-Landmarks" >Hide Landmarks</button>
+        </div>
+
+        <!-- marker list -->
+        <div data-bind="foreach: locationList">
+            <button type="button" class="btn btn-outline-primary b1" data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></button>
+        </div>
+
+        <!-- marker info -->
+        <div data-bind="with: CurrentLocation" class=" well marker_info">
+            <!-- bind it with the title attribute from CurrentLocation function CurrentLocation().title -->
+            <h3 class="box" data-bind="text: title"></h3>
+            <div class="unit">
+                <strong>✔ Address</strong>
+                <p class="box" data-bind="text: address"></p>
+            </div>
+            <div class="unit">
+                <strong>✔ About</strong>
+                <p class="box" data-bind="text: about" ></p>
+            </div>
+        </div>
+
         <!--Yahoo Weather API -->
         <img class="sides"src="img/cloud.png"><strong class="sides">Weather API:</strong>
-        <center>
-            <input class="search" type="text" id="userInput" placeholder="Fort Worth, TX" value="Fort Worth, TX"></input>
-            <button type="button" class="button" onclick="run()">Submit</button></center>
-            <div class="weather">
-                <p id="weather"></p>
-            </div>
+        <div class="center">
+            <input class="search" type="text" id="userInput" placeholder="Fort Worth, TX" value="Fort Worth, TX">
+            <!-- <input class="search" data-bind="textInput: city" placeholder="Fort Worth, TX" value="Fort Worth, TX"> -->
+            <button class="submit_button" type="button" data-bind="click: run" >Submit</button>
+        </div>
+        <!-- weather results -->
+        <div class="weather">
+            <p id="weather"></p>
+        </div>
+
         <!-- Markers search -->
         <img src="img/search.png"><strong class="sides">Markers search:</strong>
-        <center><input class="form-control width" data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off" placeholder="Search Markers"></center>
+        <input class="form-control width center" data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off" placeholder="Search Markers">
 
         <strong class="sides">Search results:</strong>
         <ul  data-bind="foreach: searchResults">
@@ -37,47 +67,43 @@
             <li class="sides" data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></li>
         </ul>
 
-    </Sidenav>
+    </nav>
 
 
-    <header class="shape">
-        <h1 class="title">Fort Worth Sights & Landmarks</h1>
+    <header class=" row shape">
+        <span class="col-md-2" style="font-size:15px;cursor:pointer" onclick="openNav()">&#9776; Search</span>
+        <h1 class="col-md-10 white_text shift">Fort Worth Sights & Landmarks</h1>
     </header>
 
     <main class="container">
-        <aside class="options-box">
-            <span style="font-size:15px;cursor:pointer" onclick="openNav()">&#9776; Search</span>
-
-            <div>
-                <input data-bind="click: showLandmarks" id="show-Landmarks" type="button" value="Show Sights & Landmarks">
-                <input data-bind="click: hideLandmarks" id="hide-Landmarks" type="button" value="Hide Sights & Landmarks">
-            </div>
-
-            <div>
-                <ul data-bind="foreach: locationList">
-                    <button type="button" class="btn btn-outline-primary b1" data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></button>
-                    <br>
-                </ul>
-            </div>
-
-            <div data-bind="with: CurrentLocation" class=" well">
-                <!-- bind it with the title attribute from CurrentLocation function CurrentLocation().title -->
-                <h3 class="box" data-bind="text: title"></h3>
-                <div class="unit">
-                    <strong>Address</strong>
-                    <p class="text box" data-bind="text: address"></p>
-                </div>
-                <div class="unit">
-                    <strong>About</strong>
-                    <p class="text box text_space" data-bind="text: about" ></p>
-                </div>
-            </div>
-
-            <div id="map"></div>
-        </aside>
+        <div id="map"></div>
     </main>
-    <footer class="shape title">
-        <div  id="footer"><p><strong>Created by:</strong> Noah Shmais</p></div>
+
+
+    <footer class="row shape">
+        <div class="col-md-3"><p><strong>Created by:</strong> Noah Shmais</p></div>
+
+        <div class="col-md-9 shift">
+            <a href="https://www.linkedin.com/" class="fa-stack fa-lg" target="_blank">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x"></i>
+            </a>
+
+            <a href="https://github.com/Nshmais/" class="fa-stack fa-lg" target="_blank">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </a>
+
+            <a href="https://twitter.com/" class="fa-stack fa-lg" target="_blank">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </a>
+
+            <a href="https://www.facebook.com/" class="fa-stack fa-lg" target="_blank">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x"></i>
+            </a>
+        </div>
     </footer>
 
 
@@ -95,7 +121,6 @@
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpjPjaZgnxULhSL1hzL76lCk4HrIK_WTA&libraries=geometry&v=3&callback=initMap" onerror="ErrorHandling()">
     </script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script> -->
 
   </body>
 </html>
