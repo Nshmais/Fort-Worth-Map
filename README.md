@@ -6,7 +6,7 @@ The main task of this project is to develop a single page application featuring 
 ## Installation & Run
 1. Clone the [Fort-Worth-Map](https://github.com/Nshmais/Fort-Worth-Map) github repository.
 2. Generated/ Replace `API key`. For more info check next section `Google API key`.
-3. Double click on `Neighberhood_map.html` file that you cloned.
+3. Double click on `index.html` file that you cloned.
 4. Welcome to Fort Worth, TX
 ## Yahoo Weather API
 <img src="img/cloud.png" height="25"> The weather APIsearch is avalible in the navbar and only needs city and state as inputs (ex. `Fort Worth, TX`) to work and display current temperature in fahrenheit (°F) and sky condition.
