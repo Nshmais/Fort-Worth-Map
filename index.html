@@ -45,7 +45,7 @@
         <img class="sides"src="img/cloud.png"><strong class="sides">Weather API:</strong>
         <div class="center">
             <input class="search" type="text" id="userInput" placeholder="Fort Worth, TX" value="Fort Worth, TX">
-            <!-- <input class="search" data-bind="textInput: city" placeholder="Fort Worth, TX" value="Fort Worth, TX"> -->
+            <!-- <input class="search" data-bind="textInput: city" type="text" placeholder="Fort Worth, TX" value="Fort Worth, TX"/> -->
             <button class="submit_button" type="button" data-bind="click: run" >Submit</button>
         </div>
         <!-- weather results -->
@@ -55,7 +55,7 @@
 
         <!-- Markers search -->
         <img src="img/search.png"><strong class="sides">Markers search:</strong>
-        <input class="form-control width center" data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off" placeholder="Search Markers">
+        <input class="form-control width center" data-bind="value: placeQuery, valueUpdate: 'keyup'" autocomplete="off" placeholder="Search Markers">
 
         <strong class="sides">Search results:</strong>
         <ul  data-bind="foreach: searchResults">
@@ -117,6 +117,7 @@
 
     <script src="js/app.js"></script>
     <script src="js/Sidenav.js"></script>
+    <!-- <script src="js/yahoo_weather.js"></script> -->
     <!-- insert google map API -->
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpjPjaZgnxULhSL1hzL76lCk4HrIK_WTA&libraries=geometry&v=3&callback=initMap" onerror="ErrorHandling()">

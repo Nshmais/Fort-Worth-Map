@@ -1,20 +1,21 @@
-// Yahoo Weather API
-var city = "";
-
 // Create a global variable for map
 var map;
 // Create a new blank array for all the markers.
 var markers = [];
-// Create a styles array to use with the map.
+
+
+// Yahoo Weather API
+var city = "";
 
 function run(){
     city =document.getElementById("userInput").value;
     getWeather(city);
-}
+};
 
 function getWeather(city) {
     // yahoo api for weather
-    $.get('https://query.yahooapis.com/v1/public/yql?q=select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + city + '")&format=json', function (data) {
+    var URL= 'https://query.yahooapis.com/v1/public/yql?q=select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + city + '")&format=json'
+    $.get(URL, function (data) {
         /* Check that a place was found (we'll just grab the first) */
         if (data.query.results === null) {
             console.log("Location not found: " + city + "!");
@@ -59,10 +60,10 @@ var ViewModel = function(){
     };
 
     // Create Search for Sidenav
-    this.Query = ko.observable('');
+    this.placeQuery = ko.observable('');
 
     this.searchResults = ko.computed(function() {
-        var q = self.Query();
+        var q = self.placeQuery();
         hideLandmarks();
 
         var resultList =  self.locationList().filter(function(i) {
