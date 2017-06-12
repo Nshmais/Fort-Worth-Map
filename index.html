@@ -24,7 +24,7 @@
 
         <!-- marker list -->
         <div data-bind="foreach: locationList">
-            <button type="button" class="btn btn-outline-primary b1" data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></button>
+            <button type="button" class="btn btn-outline-primary b1" data-bind="text: $data.title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></button>
         </div>
 
         <!-- marker info -->
@@ -59,7 +59,7 @@
 
         <strong class="sides">Search results:</strong>
         <ul  data-bind="foreach: searchResults">
-            <li class="sides" data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></li>
+            <li class="sides" data-bind="text: title, click: function() {Bounce(itemIndex); $parent.setLandmark(itemIndex);}"></li>
         </ul>
 
         <strong class="sides">All locationList:</strong>

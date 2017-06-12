@@ -1,6 +1,12 @@
 // Yahoo Weather API
 var city = "";
 
+// Create a global variable for map
+var map;
+// Create a new blank array for all the markers.
+var markers = [];
+// Create a styles array to use with the map.
+
 function run(){
     city =document.getElementById("userInput").value;
     getWeather(city);
@@ -31,7 +37,8 @@ function getWeather(city) {
 
 // start locations for markers
 // create an empty Location function
-var Location = function(data){
+var Location = function(data, index){
+    this.itemIndex = index;
     this.title = data.title;
     this.location = data.location;
     this.about = data.about;
@@ -42,8 +49,8 @@ var ViewModel = function(){
     var self=this;
     // creat a locationList array to loop all the data and map Location function
     this.locationList = ko.observableArray([]);
-    locations.forEach(function(locationItem){
-        self.locationList.push(new Location(locationItem));
+    locations.forEach(function(locationItem, index){
+        self.locationList.push(new Location(locationItem, index));
     });
     this.CurrentLocation = ko.observable(self.locationList()[0]);
     // display a cliked landmark
@@ -56,9 +63,17 @@ var ViewModel = function(){
 
     this.searchResults = ko.computed(function() {
         var q = self.Query();
-        return self.locationList().filter(function(i) {
-            return i.title.toLowerCase().indexOf(q) >= 0;
+        hideLandmarks();
+
+        var resultList =  self.locationList().filter(function(i) {
+            var index = i.title.toLowerCase().indexOf(q);
+            return index >= 0;
         });
+        resultList.forEach(function(item){
+            if (markers[item.itemIndex])
+                markers[item.itemIndex].setVisible(true);
+        });
+        return resultList;
     });
 };
 
@@ -66,11 +81,7 @@ ko.applyBindings(new ViewModel());
 
 
 
-// Create a global variable for map
-var map;
-// Create a new blank array for all the markers.
-var markers = [];
-// Create a styles array to use with the map.
+
 
 function initMap() {
     //creates a new map - only center and zoom are required stayle can be commented-out for defult style.
@@ -185,23 +196,24 @@ function populateInfoWindow(marker, infowindow) {
 
 // This function will loop through the markers array and display them all.
 function showLandmarks() {
-  var bounds = new google.maps.LatLngBounds();
+  // var bounds = new google.maps.LatLngBounds();
   // Extend the boundaries of the map for each marker and display the marker
   for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(map);
-        bounds.extend(markers[i].position);
+        // markers[i].setMap(map);
+        // bounds.extend(markers[i].position);
+        markers[i].setVisible(true);
     }
     // make sure map markers always fit on screen
-    map.fitBounds(bounds);
-    google.maps.event.addDomListener(window, 'resize', function() {
-      map.fitBounds(bounds); // `bounds` is a `LatLngBounds` object
-    });
+    // map.fitBounds(bounds);
+    // google.maps.event.addDomListener(window, 'resize', function() {
+    //   map.fitBounds(bounds); // `bounds` is a `LatLngBounds` object
+    // });
 }
 
 // This function will loop through the markers and hide them all.
 function hideLandmarks() {
     for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
+        markers[i].setVisible(false);
     }
 }
 
@@ -235,7 +247,6 @@ function Bounce(index) {
         },5*700);
         }
 }
-
 
 //In case of error a message is displayed notifying the user that the data can't be loaded from Google API
 function ErrorHandling() {
