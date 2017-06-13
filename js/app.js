@@ -3,39 +3,6 @@ var map;
 // Create a new blank array for all the markers.
 var markers = [];
 
-
-// Yahoo Weather API
-var city = "";
-
-function run(){
-    city =document.getElementById("userInput").value;
-    getWeather(city);
-};
-
-function getWeather(city) {
-    // yahoo api for weather
-    var URL= 'https://query.yahooapis.com/v1/public/yql?q=select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + city + '")&format=json'
-    $.get(URL, function (data) {
-        /* Check that a place was found (we'll just grab the first) */
-        if (data.query.results === null) {
-            console.log("Location not found: " + city + "!");
-        } else{
-            // get temprature and sky conditions from API results
-            var temp=data.query.results.channel.item.condition.temp;
-            var sky=data.query.results.channel.item.condition.text;
-            var weather_string="";
-            weather_string += "<strong>City: </strong>"+ city+ "<br><strong>Temperature: </strong>"+ temp+ "°F"+ "<br><strong>Sky: </strong>"+sky;
-            // display string as html code in weather id tag
-            document.getElementById("weather").innerHTML=weather_string;
-        }
-    })
-    // error handling method for Ajax request
-    .fail(function() {
-        alert( "Error, please check your Ajax request (Yahoo Weather API)" );
-    });
-}
-
-
 // start locations for markers
 // create an empty Location function
 var Location = function(data, index){
@@ -59,6 +26,35 @@ var ViewModel = function(){
         self.CurrentLocation(self.locationList()[index]);
     };
 
+
+    this.city = ko.observable('');
+    this.temp = ko.observable('');
+    this.sky = ko.observable('');
+
+    // console.log(this.city);
+
+    this.getWeather= function() {
+    // yahoo api for weather
+    console.log('i was here', self.city());
+    var URL= 'https://query.yahooapis.com/v1/public/yql?q=select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + self.city() + '")&format=json'
+    // var URL='https://query.yahooapis.com/v1/public/yql?q=select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text="Fort Worth, TX")&format=json'
+    $.get(URL, function (data) {
+        /* Check that a place was found (we'll just grab the first) */
+        if (data.query.results === null) {
+            console.log("Location not found: " + self.city() + "!");
+        } else{
+            // get temprature and sky conditions from API results
+            self.temp(data.query.results.channel.item.condition.temp);
+            self.sky(data.query.results.channel.item.condition.text);
+        }
+    })
+    // error handling method for Ajax request
+    .fail(function() {
+        alert( "Error, please check your Ajax request (Yahoo Weather API)" );
+    });
+}
+
+
     // Create Search for Sidenav
     this.placeQuery = ko.observable('');
 
@@ -66,7 +62,7 @@ var ViewModel = function(){
         var q = self.placeQuery();
         hideLandmarks();
 
-        var resultList =  self.locationList().filter(function(i) {
+        var resultList = self.locationList().filter(function(i) {
             var index = i.title.toLowerCase().indexOf(q);
             return index >= 0;
         });
@@ -79,8 +75,6 @@ var ViewModel = function(){
 };
 
 ko.applyBindings(new ViewModel());
-
-
 
 
 
