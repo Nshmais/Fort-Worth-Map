@@ -33,7 +33,7 @@ var ViewModel = function(){
 
     this.getWeather= function() {
     // yahoo api for weather
-    var URL= 'https://query.yahooapis.com/v1/public/yql?q=select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + self.city() + '")&format=json'
+    var URL= 'https://query.yahooapis.com/v1/public/yql?q=select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + self.city() + '")&format=json';
     $.get(URL, function (data) {
         /* Check that a place was found (we'll just grab the first) */
         if (data.query.results === null) {
@@ -48,7 +48,7 @@ var ViewModel = function(){
     .fail(function() {
         alert( "Error, please check your Ajax request (Yahoo Weather API)" );
     });
-}
+};
 
 
     // Create Search for Sidenav
@@ -134,7 +134,7 @@ function initMap() {
 }
 
 function markerWeather(lat, lng, marker) {
-    var URL= 'https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (SELECT woeid FROM geo.places WHERE text="('+lat+', '+lng+')")&format=json'
+    var URL= 'https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (SELECT woeid FROM geo.places WHERE text="('+lat+', '+lng+')")&format=json';
     $.get(URL, function (data) {
         /* Check that a place was found (we'll just grab the first) */
         if (data.query.results === null) {
@@ -148,7 +148,7 @@ function markerWeather(lat, lng, marker) {
     .fail(function() {
         alert( "Error, please check your Ajax request (Yahoo Weather API)" );
     });
-};
+}
 
 // This function populates the infowindow when the marker is clicked. We'll only allow
 // one infowindow which will open at the marker that is clicked, and populate based
