@@ -237,7 +237,7 @@ function makeMarkerIcon(markerColor) {
 
 
 //bounce the marker icon when click on its title
-function Bounce(index) {
+function bounce(index) {
     var marker = markers[index];
     if (marker.getAnimation() !== null) {
         marker.setAnimation(null);
@@ -251,8 +251,13 @@ function Bounce(index) {
     }
 }
 
+function openInfoWindow(index){
+    var marker = markers[index];
+    google.maps.event.trigger(marker, 'click');
+}
+
 //In case of error a message is displayed notifying the user that the data can't be loaded from Google API
-function ErrorHandling() {
+function errorHandling() {
     alert("Google Maps has failed to load. Please check your internet connection or your API link and try again later.");
 }
 

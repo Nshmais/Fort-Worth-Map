@@ -24,7 +24,7 @@
 
         <!-- marker list -->
         <div data-bind="foreach: locationList">
-            <button type="button" class="btn btn-outline-primary b1" data-bind="text: $data.title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></button>
+            <button type="button" class="btn btn-outline-primary b1" data-bind="text: $data.title, click: function() {bounce($index()); $parent.setLandmark($index());}"></button>
         </div>
 
         <!-- marker info -->
@@ -63,12 +63,12 @@
         <!-- show avialable markers after filter -->
         <strong class="sides">Search results:</strong>
         <ul  data-bind="foreach: searchResults">
-            <li class="sides" data-bind="text: title, click: function() {Bounce(itemIndex); $parent.setLandmark(itemIndex);}"></li>
+            <li class="sides" data-bind="text: title, click: function() {bounce(itemIndex); $parent.setLandmark(itemIndex); openInfoWindow($index());}"></li>
         </ul>
         <!-- show all markers -->
         <strong class="sides">All locationList:</strong>
         <ul data-bind="foreach: locationList">
-            <li class="sides" data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></li>
+            <li class="sides" data-bind="text: title, click: function() {bounce($index()); $parent.setLandmark($index()); openInfoWindow($index());}"></li>
         </ul>
     </nav>
 
@@ -121,7 +121,7 @@
     <script src="js/Sidenav.js"></script>
     <!-- insert google map API -->
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpjPjaZgnxULhSL1hzL76lCk4HrIK_WTA&libraries=geometry&v=3&callback=initMap" onerror="ErrorHandling()">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpjPjaZgnxULhSL1hzL76lCk4HrIK_WTA&libraries=geometry&v=3&callback=initMap" onerror="errorHandling()">
     </script>
   </body>
 </html>
