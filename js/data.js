@@ -39,5 +39,11 @@ var locations = [
            about:'Provides hundreds of programs aimed at engaging children and families in learning',
            address:'1600 Gendy St, Fort Worth, TX 76107',
            website:'www.fwmuseum.org',
-           location: {lat: 32.7442, lng: -97.3693}}
+           location: {lat: 32.7442, lng: -97.3693}},
+
+          {title: 'Morton Symphony Center',
+           about:' Ranked one of the worlds greatest orchestra halls',
+           address:'2301 Flora St, Dallas, TX 75201',
+           website:'www.mydso.com',
+           location: {lat: 32.7899, lng: -96.7986}}
         ];
