@@ -63,7 +63,7 @@
         <!-- show avialable markers after filter -->
         <strong class="sides">Search results:</strong>
         <ul  data-bind="foreach: searchResults">
-            <li class="sides" data-bind="text: title, click: function() {bounce(itemIndex); $parent.setLandmark(itemIndex); openInfoWindow($index());}"></li>
+            <li class="sides" data-bind="text: title, click: function() {bounce(itemIndex); $parent.setLandmark(itemIndex); openInfoWindow(itemIndex);}"></li>
         </ul>
         <!-- show all markers -->
         <strong class="sides">All locationList:</strong>
