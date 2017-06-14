@@ -44,11 +44,7 @@ The main task of this project is to develop a single page application featuring 
 13. Name your API Key something descriptive, such as Maps_API. It should reflect your intended use of the key. Click the “Create” button 
 <img src="img/13.PNG">
 
-14. Repeat steps 10 and 11 for “Server Key,” if you will be making server-side requests. You can access these keys at any time by visiting the “Credentials” sub-menu under the “API Manager” menu
-
-## The User View
-<img src="img/app1.PNG" height="500">
-<img src="img/app2.PNG" height="500">
+14. Repeat steps 10 and 11 for “Server Key,” if you will be making server-side requests. You can access these keys at any time by visiting the “Credentials” sub-menu under the “API Manager” menu.
 
 ## Geocoding
 [Geocoding](https://developers.google.com/maps/documentation/geocoding/intro) is the process of converting addresses (like "1600 Amphitheatre Parkway, Mountain View, CA") into geographic coordinates (like latitude 37.423021 and longitude -122.083739), which you can use to place markers on a map, or position the map and the other way around.
