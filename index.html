@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/logo.jpg">
-    <!-- bootstrap CSS -->
+    <!-- bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/Sidenav.css">
@@ -44,14 +44,10 @@
         <!--Yahoo Weather API -->
         <img class="sides"src="img/cloud.png"><strong class="sides">Weather API:</strong>
         <div class="center">
-            <!-- <input class="search" type="text" id="userInput" placeholder="Fort Worth, TX" value="Fort Worth, TX"> -->
-            <!-- <input class="search" data-bind="textInput: city" type="text" placeholder="Fort Worth, TX" value="Fort Worth, TX"> -->
             <input class="search" data-bind="textInput: city" placeholder="Fort Worth, TX" value="Fort Worth, TX"/>
             <button class="submit_button" type="button" data-bind="click: function() {getWeather();}" >Submit</button>
         </div>
-
-
-
+        <!-- weather results -->
         <div class="weather">
             <strong>City: </strong>
             <div data-bind="text: city"></div>
@@ -61,25 +57,19 @@
             <div data-bind="text: sky"></div>
         </div>
 
-        <!-- weather results -->
-       <!--  <div class="weather">
-            <p id="weather"></p>
-        </div> -->
-
         <!-- Markers search -->
         <img src="img/search.png"><strong class="sides">Markers search:</strong>
         <input class="form-control width center" data-bind="value: placeQuery, valueUpdate: 'keyup'" autocomplete="off" placeholder="Search Markers">
-
+        <!-- show avialable markers after filter -->
         <strong class="sides">Search results:</strong>
         <ul  data-bind="foreach: searchResults">
             <li class="sides" data-bind="text: title, click: function() {Bounce(itemIndex); $parent.setLandmark(itemIndex);}"></li>
         </ul>
-
+        <!-- show all markers -->
         <strong class="sides">All locationList:</strong>
         <ul data-bind="foreach: locationList">
             <li class="sides" data-bind="text: title, click: function() {Bounce($index()); $parent.setLandmark($index());}"></li>
         </ul>
-
     </nav>
 
 
@@ -127,13 +117,11 @@
     <!-- knockout Library -->
     <script src='js/lib/knockout-3.4.2.js'></script>
     <script src='js/lib/jquery-3.2.1.js'></script>
-
     <script src="js/app.js"></script>
     <script src="js/Sidenav.js"></script>
     <!-- insert google map API -->
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpjPjaZgnxULhSL1hzL76lCk4HrIK_WTA&libraries=geometry&v=3&callback=initMap" onerror="ErrorHandling()">
     </script>
-
   </body>
 </html>

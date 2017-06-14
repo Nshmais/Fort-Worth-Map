@@ -26,18 +26,14 @@ var ViewModel = function(){
         self.CurrentLocation(self.locationList()[index]);
     };
 
-
     this.city = ko.observable('');
     this.temp = ko.observable('');
     this.sky = ko.observable('');
 
-    // console.log(this.city);
 
     this.getWeather= function() {
     // yahoo api for weather
-    console.log('i was here', self.city());
     var URL= 'https://query.yahooapis.com/v1/public/yql?q=select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + self.city() + '")&format=json'
-    // var URL='https://query.yahooapis.com/v1/public/yql?q=select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text="Fort Worth, TX")&format=json'
     $.get(URL, function (data) {
         /* Check that a place was found (we'll just grab the first) */
         if (data.query.results === null) {
@@ -103,6 +99,8 @@ function initMap() {
       var marker = new google.maps.Marker({
         position: position,
         title: title,
+        temp:'',
+        sky:'',
         draggable: true,
         address: address,
         website: website,
@@ -112,6 +110,9 @@ function initMap() {
         map:map,
         id: i
       });
+
+      // get the weather API for each marker from position(lat, long)
+      markerWeather(locations[i].location.lat, locations[i].location.lng, marker);
       // Push the marker to our array of markers.
       markers.push(marker);
     }
@@ -132,6 +133,22 @@ function initMap() {
     });
 }
 
+function markerWeather(lat, lng, marker) {
+    var URL= 'https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (SELECT woeid FROM geo.places WHERE text="('+lat+', '+lng+')")&format=json'
+    $.get(URL, function (data) {
+        /* Check that a place was found (we'll just grab the first) */
+        if (data.query.results === null) {
+            console.log("no Location was found in this: lat"+lat+" and long"+lng+"!");
+        } else{
+            marker.temp = data.query.results.channel.item.condition.temp;
+            marker.sky = data.query.results.channel.item.condition.text;
+        }
+    })
+    // error handling method for Ajax request
+    .fail(function() {
+        alert( "Error, please check your Ajax request (Yahoo Weather API)" );
+    });
+};
 
 // This function populates the infowindow when the marker is clicked. We'll only allow
 // one infowindow which will open at the marker that is clicked, and populate based
@@ -165,7 +182,7 @@ function populateInfoWindow(marker, infowindow) {
           var heading = google.maps.geometry.spherical.computeHeading(
             nearStreetViewLocation, marker.position);
             // html for marker pop up infowindow
-            infowindow.setContent('<div>' + marker.title + '</div><a target="_blank" href="https://'+ marker.website + '">' + marker.website + '</a><div>' + marker.address + '</div><div id="pano"></div>');
+            infowindow.setContent('<div>' + marker.title + '</div><div>Temperature: ' + marker.temp + '°F</div><div>Weather: ' + marker.sky + '</div><a target="_blank" href="https://'+ marker.website + '">' + marker.website + '</a><div>' + marker.address + '</div><div id="pano"></div>');
             var panoramaOptions = {
               position: nearStreetViewLocation,
               pov: {
@@ -191,18 +208,9 @@ function populateInfoWindow(marker, infowindow) {
 
 // This function will loop through the markers array and display them all.
 function showLandmarks() {
-  // var bounds = new google.maps.LatLngBounds();
-  // Extend the boundaries of the map for each marker and display the marker
   for (var i = 0; i < markers.length; i++) {
-        // markers[i].setMap(map);
-        // bounds.extend(markers[i].position);
         markers[i].setVisible(true);
     }
-    // make sure map markers always fit on screen
-    // map.fitBounds(bounds);
-    // google.maps.event.addDomListener(window, 'resize', function() {
-    //   map.fitBounds(bounds); // `bounds` is a `LatLngBounds` object
-    // });
 }
 
 // This function will loop through the markers and hide them all.
@@ -240,10 +248,12 @@ function Bounce(index) {
             marker.setAnimation(null);
             // multiple the desired number of bounces by 700ms (it take the marker 700ms for each bounce)
         },5*700);
-        }
+    }
 }
 
 //In case of error a message is displayed notifying the user that the data can't be loaded from Google API
 function ErrorHandling() {
     alert("Google Maps has failed to load. Please check your internet connection or your API link and try again later.");
 }
+
+
